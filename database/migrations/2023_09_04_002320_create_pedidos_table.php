@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cuentas', function (Blueprint $table) {
+        Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre");
-            $table->string("email")->unique();
-            $table->string("telefono");
+            $table->string("producto");
+            $table->integer("cantidad");
+            $table->integer("valor");
+            $table->integer("total");
+            $table->string('cuenta_id');
+            $table->index('cuenta_id');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cuentas');
+        Schema::dropIfExists('pedidos');
     }
 };

@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Jenssegers\Mongodb\Eloquent\Model;
 
-
-class Cuenta extends Model
+class Pedido extends Model
 {
     use HasFactory;
     protected $connection = 'mongodb';
-    public function productos()
+    public function cuenta()
     {
-        return $this->hasMany(Producto::class, 'cuenta_id');
+        return $this->belongsTo(Cuenta::class, 'cuenta_id');
     }
 }
